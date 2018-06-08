@@ -38,7 +38,7 @@ router.get('/products', (req, res, next) => {
 });
 
 //Returns a specific product by it's id
-router.get('/products/:products', (req, res, next) => {
+router.get('/products/:product', (req, res, next) => {
 
 });
 
