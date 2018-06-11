@@ -101,7 +101,7 @@ router.post('/:product/reviews', (req, res, next) => {
             review.userName = faker.internet.userName();
             review.reviewText = faker.lorem.words();
             review.product = product._id;
-            
+
             product.reviews.push(review).isNew
             product.save((err) => {
                 if (err) throw err
@@ -125,7 +125,7 @@ router.delete('/reviews/:review', (req, res, next) => {
         product.reviews.id(req.params.review).remove();
         product.save(function (err) {
             if (err) return handleError(err);
-          });
+        });
         res.send(product)
     })
 })
