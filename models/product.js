@@ -1,11 +1,22 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const ProductSchema = new Schema({
-  category: String,
-  name: String,
-  price: Number,
-  image: String
+const reviewSchema = new Schema({ 
+    userName: String,
+    reviewText: String,
+    product:{ type: Schema.Types.ObjectId, ref: 'Product' }
 });
 
-module.exports = mongoose.model('Product', ProductSchema);
+const productSchema = new Schema({
+    category: String,
+    name: String,
+    price: Number,
+    image: String,
+    reviews: [reviewSchema]
+});
+
+
+module.exports = { 
+    Product: mongoose.model("Product", productSchema),
+    Review: mongoose.model("Review", reviewSchema)
+};
